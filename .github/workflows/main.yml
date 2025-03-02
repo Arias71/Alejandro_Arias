@@ -1,0 +1,18 @@
+import requests
+import json
+
+# URL de la API
+url = "https://dogapi.dog/api/v2/breeds"
+
+# Hacer la solicitud GET a la API
+response = requests.get(url)
+
+# Verificar si la solicitud fue exitosa (código 200)
+if response.status_code == 200:
+    # Convertir la respuesta a un objeto Python
+    data = response.json()
+
+    # Escribir la respuesta en un archivo JSON
+    with open("dog_breeds.json", "w") as file:
+        json.dump(data, file, indent=4)
+    print("Datos guardados en 'dog_breeds.json'")
